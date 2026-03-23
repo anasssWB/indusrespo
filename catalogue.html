@@ -368,27 +368,34 @@ ${escapeHtml(product.name)}
     }
 
     function buildWhatsAppMessage() {
-      const cartEntries = Object.entries(state.cart).filter(([, qty]) => qty > 0);
-      if (!cartEntries.length) return '';
+  const cartEntries = Object.entries(state.cart).filter(([, qty]) => qty > 0);
+  if (!cartEntries.length) return '';
 
-      const lines = [
-        'Bonjour, je souhaite demander un devis pour les produits suivants :',
-        ''
-      ];
+  const lines = [
+    'Bonjour,',
+    '',
+    'Je souhaite demander un devis pour les produits suivants :',
+    ''
+  ];
 
-      cartEntries.forEach(([id, qty]) => {
-        const product = products.find((item) => item.id === id);
-        if (!product) return;
-        if (product.price && product.price !== 'Sur demande') {
-          lines.push(`- ${product.name} (Ref: ${product.id}) | Qté: ${qty} | Prix: ${product.price}`);
-        } else {
-          lines.push(`- ${product.name} (Ref: ${product.id}) | Qté: ${qty}`);
-        }
-      });
+  cartEntries.forEach(([id, qty]) => {
+    const product = products.find((item) => item.id === id);
+    if (!product) return;
 
-      lines.push('', 'Merci de me confirmer disponibilité, prix et délai.');
-      return lines.join('\n');
-    }
+    lines.push(`• ${product.name}`);
+    lines.push(`  Ref: ${product.id} | Qté: ${qty}`);
+    lines.push('');
+  });
+
+  lines.push('Merci de me confirmer :');
+  lines.push('- Disponibilité');
+  lines.push('- Prix');
+  lines.push('- Délai de livraison');
+  lines.push('');
+  lines.push('Cordialement.');
+
+  return lines.join('\n');
+}
 
     function increaseQty(productId) {
       state.cart[productId] = (state.cart[productId] || 0) + 1;
