@@ -5,7 +5,7 @@ window.products = [
     category: 'Automates / CPU',
     brand: 'Siemens',
     price: 'Sur demande',
-    image: './images/adaptateur-pc-s7-300-simatic-s7.jpg',
+    image: './images/SIEM-ADAPT-PC-S7-300.jpg',
     description: 'Adaptateur de communication pour environnement Siemens S7-300 / SIMATIC S7.'
   },
   {
