@@ -600,21 +600,34 @@
     }
 
     function buildWhatsAppMessage() {
-      const cartEntries = Object.entries(state.cart).filter(([, qty]) => qty > 0);
-      if (!cartEntries.length) return '';
+  const cartEntries = Object.entries(state.cart).filter(([, qty]) => qty > 0);
+  if (!cartEntries.length) return '';
 
-      const lines = [
-        'Bonjour, je souhaite demander un devis pour les références suivantes :',
-        ''
-      ];
+  const lines = [
+    'Bonjour, je souhaite demander un devis pour les produits suivants :',
+    ''
+  ];
 
-      cartEntries.forEach(([id, qty]) => {
-        lines.push(`- ${id} x${qty}`);
-      });
+  cartEntries.forEach(([id, qty]) => {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
 
-      lines.push('', 'Merci de me confirmer disponibilité, prix et délai.');
-      return lines.join('\n');
+    const name = product.name;
+    const ref = product.id;
+    const price = product.price;
+
+    // 👇 format pro
+    if (price && price !== 'Sur demande') {
+      lines.push(`- ${name} (Ref: ${ref}) | Qté: ${qty} | Prix: ${price}`);
+    } else {
+      lines.push(`- ${name} (Ref: ${ref}) | Qté: ${qty}`);
     }
+  });
+
+  lines.push('', 'Merci de me confirmer disponibilité, prix et délai.');
+
+  return lines.join('\n');
+}
 
     function updateHeroWhatsappLink() {
       const fallbackMessage = 'Bonjour, je souhaite avoir plus d\'informations sur vos produits industriels.';
