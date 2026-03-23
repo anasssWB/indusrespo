@@ -5,7 +5,7 @@ window.products = [
     category: 'Automates / CPU',
     brand: 'Siemens',
     price: 'Sur demande',
-    image: './images/images/HMI-TD200-S7-200.jpg',
+    image: './images/HMI-TD200-S7-200.jpg',
     description: 'Adaptateur de communication pour environnement Siemens S7-300 / SIMATIC S7.'
   },
   {
