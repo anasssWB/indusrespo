@@ -5,7 +5,7 @@ window.products = [
     category: 'Automates / CPU',
     brand: 'Siemens',
     price: 'Sur demande',
-    image: './images/HMI-TD200-S7-200.jpg.jpeg',
+    image: './images/SIEM-ADAPT-PC-S7-300.jpeg',
     description: 'Adaptateur de communication pour environnement Siemens S7-300 / SIMATIC S7.'
   },
   {
@@ -15,7 +15,7 @@ window.products = [
     brand: 'Siemens',
     price: 'Sur demande',
     image: './images/afficheur-hmi-serie-kp300-240x80-pixels-24-vcc.jpg',
-    description: 'Interface opérateur HMI compacte, alimentation 24 VCC, adaptée aux applications industrielles.'
+    description: 'Interface opérateur HMI compacte, alimentation 24 VCC.'
   },
   {
     id: 'HMI-LOGO-0BA6-24V',
@@ -23,8 +23,8 @@ window.products = [
     category: 'HMI / Afficheurs',
     brand: 'Siemens',
     price: 'Sur demande',
-    image: './images/afficheur-hmi-serie-logo-0ba6-24-vcc.jpg',
-    description: 'Afficheur HMI pour gamme Siemens LOGO!, alimentation 24 VCC.'
+    image: './images/HMI-LOGO-0BA6-24V.jpg.jpeg',
+    description: 'Afficheur HMI pour gamme Siemens LOGO!.'
   },
   {
     id: 'HMI-TD200-S7-200',
@@ -32,8 +32,8 @@ window.products = [
     category: 'HMI / Afficheurs',
     brand: 'Siemens',
     price: 'Sur demande',
-    image: './images/afficheur-hmi-siemens-td-200-pour-simatic-s7-200.jpg',
-    description: 'Terminal opérateur TD 200 dédié aux systèmes Siemens SIMATIC S7-200.'
+    image: './images/HMI-TD200-S7-200.jpg.jpeg',
+    description: 'Terminal opérateur TD200 pour S7-200.'
   },
   {
     id: 'HMI-HMIGT03510-7',
@@ -41,7 +41,7 @@ window.products = [
     category: 'HMI / Afficheurs',
     brand: 'Schneider',
     price: 'Sur demande',
-    image: './images/afficheur-hmi-tactile-7-pouces-couleur-hmigt03510.jpg',
-    description: 'Écran HMI tactile couleur 7 pouces pour visualisation et commande industrielle.'
+    image: './images/HMI-HMIGT03510-7.jpg.jpeg',
+    description: 'Écran HMI tactile industriel 7 pouces.'
   }
 ];
