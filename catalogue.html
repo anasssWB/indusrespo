@@ -289,7 +289,13 @@ ${escapeHtml(product.name)}
                 <div class="flex items-end justify-between gap-4">
                   <div>
                     <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Prix</p>
-                    <p class="mt-1 text-2xl font-bold leading-none text-brand-700">${escapeHtml(product.price)}</p>
+                   <p class="mt-1 ${
+  product.price === 'Sur demande'
+    ? 'text-[0.9rem] font-medium text-slate-500'
+    : 'text-[1.1rem] font-bold text-brand-700'
+}">
+  ${escapeHtml(product.price)}
+</p>
                   </div>
 
                   <div class="flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-1">
