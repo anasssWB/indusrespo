@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue | Robotic &amp; Industrial Supply</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f7fafc',
+              100: '#eaf4fb',
+              200: '#cfe7f6',
+              300: '#9fd0ee',
+              400: '#63b2e2',
+              500: '#2f8fce',
+              600: '#1f74b3',
+              700: '#1d5f91',
+              800: '#1d4f76',
+              900: '#1d425f'
+            },
+            accent: {
+              50: '#fff8f1',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(15, 23, 42, 0.08)',
+            card: '0 8px 24px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.82);
+    }
+  </style>
+</head>
+<body class="bg-[linear-gradient(180deg,#f8fbfe_0%,#f8fafc_48%,#ffffff_100%)] text-slate-900">
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 glass">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="./catalogue.html" class="group flex items-center gap-4">
+        <div class="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-[1.35rem] bg-[linear-gradient(135deg,#1d4f76_0%,#2f8fce_58%,#f97316_100%)] text-sm font-bold text-white shadow-soft ring-1 ring-slate-200/60">
+          <span class="relative z-10">RI</span>
+          <div class="absolute -right-2 -top-2 h-6 w-6 rounded-full bg-white/20 blur-md"></div>
+        </div>
+        <div>
+          <p class="text-base font-semibold tracking-wide text-slate-950 transition group-hover:text-brand-700">Robotic &amp; Industrial Supply</p>
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Automation · Robotics · Components</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-8 md:flex">
+        <a href="./catalogue.html" class="text-sm text-slate-600 transition hover:text-slate-900">Accueil</a>
+        <a href="#filters" class="text-sm text-slate-600 transition hover:text-slate-900">Filtres</a>
+        <a href="#grid" class="text-sm text-slate-600 transition hover:text-slate-900">Produits</a>
+      </nav>
+      <a href="#filters" class="rounded-xl bg-brand-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-800">Filtrer</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent-600">Catalogue</p>
+          <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950">Catalogue complet produits</h1>
+          <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+            Recherchez une référence, filtrez par marque ou catégorie, puis ajoutez les produits au panier pour envoyer votre demande directement via WhatsApp.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-soft">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Flux</p>
+          <p class="mt-2 text-sm font-medium text-slate-900">Recherche → sélection → panier → WhatsApp</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="filters" class="mx-auto max-w-7xl px-6 pb-6 lg:px-8">
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft">
+        <div class="grid gap-3 lg:grid-cols-[1.4fr_0.8fr_0.8fr_auto]">
+          <input id="searchInput" type="text" placeholder="Search product / ref / brand"
+            class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-slate-400" />
+          <select id="brandSelect" class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-slate-400"></select>
+          <select id="categorySelect" class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-slate-400"></select>
+          <button id="clearFiltersBtn" class="rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100">
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
+      <div class="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm font-medium text-slate-900">Résultats</p>
+          <p id="resultsCount" class="mt-1 text-sm text-slate-500">0 produit</p>
+        </div>
+        <a href="./catalogue.html" class="text-sm font-medium text-brand-700 transition hover:text-brand-800">← Retour à l'accueil</a>
+      </div>
+      <div id="grid" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
+    </section>
+  </main>
+
+  <aside class="fixed bottom-5 right-5 z-50 w-[calc(100%-2rem)] max-w-sm">
+    <div class="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-soft">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold text-slate-950">Panier</p>
+          <p id="cartCountLabel" class="mt-1 text-sm text-slate-500">0 produit sélectionné</p>
+        </div>
+        <button id="clearCartBtn" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-medium text-slate-600 transition hover:bg-slate-100">
+          Vider
+        </button>
+      </div>
+      <div id="cartItems" class="mt-4 max-h-64 space-y-3 overflow-y-auto pr-1"></div>
+      <button id="sendOrderBtn" class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-medium text-white transition hover:bg-emerald-600">
+        Commander via WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <script src="./products.js"></script>
+  <script>
+    window.products = window.products || [
+      {
+        id: 'PLC-S71212C',
+        name: 'Siemens S7-1200 CPU 1212C',
+        category: 'Automates / CPU',
+        brand: 'Siemens',
+        price: 'Sur demande',
+        image: './images/siemens-s7-1200.jpg',
+        description: 'CPU automate compact industriel avec Ethernet intégré.'
+      },
+      {
+        id: 'REL-4052',
+        name: 'Relais Finder 40.52 - 24VDC',
+        category: 'Relais & Interfaces',
+        brand: 'Finder',
+        price: '35 DH',
+        image: './images/finder-4052.jpg',
+        description: 'Relais électromécanique 2RT, 8A, adapté aux armoires de commande et panneaux industriels.'
+      },
+      {
+        id: 'SCAN-NANO3',
+        name: 'Scrutateur laser NanoScan3',
+        category: 'Sécurité machine',
+        brand: 'SICK',
+        price: 'Sur demande',
+        image: './images/sick-nanoscan3.jpg',
+        description: 'Scrutateur laser pour protection périmétrique, contrôle d\'accès machine et plateformes mobiles/robotiques.'
+      }
+    ];
+
+    const products = Array.isArray(window.products) ? window.products : [];
+    const whatsappPhone = '212600000000';
+
+    const state = {
+      category: 'Tous',
+      brand: 'Tous',
+      search: '',
+      cart: {}
+    };
+
+    const productGrid = document.getElementById('grid');
+    const brandSelect = document.getElementById('brandSelect');
+    const categorySelect = document.getElementById('categorySelect');
+    const searchInput = document.getElementById('searchInput');
+    const cartItems = document.getElementById('cartItems');
+    const cartCountLabel = document.getElementById('cartCountLabel');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    const sendOrderBtn = document.getElementById('sendOrderBtn');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+    const resultsCount = document.getElementById('resultsCount');
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getCategories() {
+      return ['Tous', ...new Set(products.map((product) => product.category))];
+    }
+
+    function getBrands() {
+      return ['Tous', ...new Set(products.map((product) => product.brand))];
+    }
+
+    function filteredProducts() {
+      const searchValue = state.search.trim().toLowerCase();
+      return products.filter((product) => {
+        const categoryMatch = state.category === 'Tous' || product.category === state.category;
+        const brandMatch = state.brand === 'Tous' || product.brand === state.brand;
+        const searchMatch = !searchValue
+          || product.name.toLowerCase().includes(searchValue)
+          || product.id.toLowerCase().includes(searchValue)
+          || product.category.toLowerCase().includes(searchValue)
+          || product.brand.toLowerCase().includes(searchValue)
+          || product.description.toLowerCase().includes(searchValue);
+        return categoryMatch && brandMatch && searchMatch;
+      });
+    }
+
+    function renderCategoryOptions() {
+      categorySelect.innerHTML = getCategories()
+        .map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`)
+        .join('');
+      categorySelect.value = state.category;
+    }
+
+    function renderBrandOptions() {
+      brandSelect.innerHTML = getBrands()
+        .map((brand) => `<option value="${escapeHtml(brand)}">${escapeHtml(brand)}</option>`)
+        .join('');
+      brandSelect.value = state.brand;
+    }
+
+    function renderProducts() {
+      const items = filteredProducts();
+      resultsCount.textContent = `${items.length} produit${items.length > 1 ? 's' : ''}`;
+
+      if (!items.length) {
+        productGrid.innerHTML = `
+          <div class="col-span-full rounded-[2rem] border border-dashed border-slate-300 bg-white p-10 text-center shadow-soft">
+            <p class="text-lg font-medium text-slate-900">Aucun produit trouvé</p>
+            <p class="mt-2 text-sm text-slate-500">Modifiez la recherche ou réinitialisez les filtres.</p>
+          </div>
+        `;
+        return;
+      }
+
+      productGrid.innerHTML = items.map((product) => {
+        const qty = state.cart[product.id] || 0;
+        return `
+          <article class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+              <div class="flex h-full w-full items-center justify-center bg-white p-6">
+                <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="max-h-36 w-auto object-contain transition duration-500 group-hover:scale-105" />
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <p class="text-xs uppercase tracking-[0.18em] text-slate-400">${escapeHtml(product.category)}</p>
+                    <span class="rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-medium text-brand-700">${escapeHtml(product.brand)}</span>
+                  </div>
+                  <h3 class="mt-2 text-lg font-semibold text-slate-950">${escapeHtml(product.name)}</h3>
+                </div>
+                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">${escapeHtml(product.id)}</span>
+              </div>
+              <p class="mt-4 text-sm leading-7 text-slate-600">${escapeHtml(product.description)}</p>
+              <div class="mt-6 flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Prix</p>
+                  <p class="mt-1 text-base font-semibold text-slate-950">${escapeHtml(product.price)}</p>
+                </div>
+                <div class="flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-1">
+                  <button type="button" class="h-10 w-10 rounded-xl text-lg text-slate-700 transition hover:bg-white" data-action="decrease" data-product-id="${escapeHtml(product.id)}">−</button>
+                  <span class="min-w-[2rem] text-center text-sm font-medium text-slate-900">${qty}</span>
+                  <button type="button" class="h-10 w-10 rounded-xl bg-brand-700 text-lg text-white transition hover:bg-brand-800" data-action="increase" data-product-id="${escapeHtml(product.id)}">+</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      bindProductButtons();
+    }
+
+    function bindProductButtons() {
+      productGrid.querySelectorAll('button[data-action="increase"]').forEach((button) => {
+        button.addEventListener('click', () => increaseQty(button.dataset.productId));
+      });
+      productGrid.querySelectorAll('button[data-action="decrease"]').forEach((button) => {
+        button.addEventListener('click', () => decreaseQty(button.dataset.productId));
+      });
+    }
+
+    function renderCart() {
+      const cartEntries = Object.entries(state.cart).filter(([, qty]) => qty > 0);
+      const totalItems = cartEntries.reduce((sum, [, qty]) => sum + qty, 0);
+      cartCountLabel.textContent = `${totalItems} produit${totalItems > 1 ? 's' : ''} sélectionné${totalItems > 1 ? 's' : ''}`;
+
+      if (!cartEntries.length) {
+        cartItems.innerHTML = `
+          <div class="rounded-2xl bg-slate-50 p-4 text-sm text-slate-500">
+            Aucun produit dans le panier.
+          </div>
+        `;
+        return;
+      }
+
+      cartItems.innerHTML = cartEntries.map(([id, qty]) => {
+        const product = products.find((item) => item.id === id);
+        return `
+          <div class="rounded-2xl border border-slate-200 p-4">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">${escapeHtml(product.name)}</p>
+                <p class="mt-1 text-xs text-slate-500">${escapeHtml(product.id)}</p>
+              </div>
+              <div class="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-1">
+                <button type="button" class="h-8 w-8 rounded-lg text-sm text-slate-700 transition hover:bg-white" data-cart-action="decrease" data-product-id="${escapeHtml(id)}">−</button>
+                <span class="min-w-[1.75rem] text-center text-sm font-medium text-slate-900">${qty}</span>
+                <button type="button" class="h-8 w-8 rounded-lg bg-brand-700 text-sm text-white transition hover:bg-brand-800" data-cart-action="increase" data-product-id="${escapeHtml(id)}">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      bindCartButtons();
+    }
+
+    function bindCartButtons() {
+      cartItems.querySelectorAll('button[data-cart-action="increase"]').forEach((button) => {
+        button.addEventListener('click', () => increaseQty(button.dataset.productId));
+      });
+      cartItems.querySelectorAll('button[data-cart-action="decrease"]').forEach((button) => {
+        button.addEventListener('click', () => decreaseQty(button.dataset.productId));
+      });
+    }
+
+    function buildWhatsAppMessage() {
+      const cartEntries = Object.entries(state.cart).filter(([, qty]) => qty > 0);
+      if (!cartEntries.length) return '';
+
+      const lines = [
+        'Bonjour, je souhaite demander un devis pour les produits suivants :',
+        ''
+      ];
+
+      cartEntries.forEach(([id, qty]) => {
+        const product = products.find((item) => item.id === id);
+        if (!product) return;
+        if (product.price && product.price !== 'Sur demande') {
+          lines.push(`- ${product.name} (Ref: ${product.id}) | Qté: ${qty} | Prix: ${product.price}`);
+        } else {
+          lines.push(`- ${product.name} (Ref: ${product.id}) | Qté: ${qty}`);
+        }
+      });
+
+      lines.push('', 'Merci de me confirmer disponibilité, prix et délai.');
+      return lines.join('\n');
+    }
+
+    function increaseQty(productId) {
+      state.cart[productId] = (state.cart[productId] || 0) + 1;
+      renderAll();
+    }
+
+    function decreaseQty(productId) {
+      if (!state.cart[productId]) return;
+      state.cart[productId] -= 1;
+      if (state.cart[productId] <= 0) delete state.cart[productId];
+      renderAll();
+    }
+
+    function clearCart() {
+      state.cart = {};
+      renderAll();
+    }
+
+    function clearFilters() {
+      state.category = 'Tous';
+      state.brand = 'Tous';
+      state.search = '';
+      searchInput.value = '';
+      renderAll();
+    }
+
+    function sendOrderToWhatsApp() {
+      const message = buildWhatsAppMessage();
+      if (!message) {
+        alert('Ajoutez au moins un produit au panier avant l\'envoi.');
+        return;
+      }
+      const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function renderAll() {
+      renderBrandOptions();
+      renderCategoryOptions();
+      renderProducts();
+      renderCart();
+    }
+
+    function runSelfTests() {
+      console.assert(Array.isArray(products), 'Test failed: products should be an array');
+      console.assert(products.length > 0, 'Test failed: products fallback should not be empty');
+      console.assert(getCategories().includes('Tous'), 'Test failed: default category missing');
+      console.assert(getBrands().includes('Tous'), 'Test failed: default brand missing');
+
+      const previousCart = { ...state.cart };
+      const previousBrand = state.brand;
+      const previousCategory = state.category;
+      const previousSearch = state.search;
+
+      state.cart = { 'REL-4052': 2, 'SCAN-NANO3': 1 };
+      state.brand = 'SICK';
+      console.assert(filteredProducts().every((product) => product.brand === 'SICK'), 'Test failed: brand filtering did not restrict products correctly');
+
+      state.brand = 'Tous';
+      state.category = 'Relais & Interfaces';
+      console.assert(filteredProducts().every((product) => product.category === 'Relais & Interfaces'), 'Test failed: category filtering did not restrict products correctly');
+
+      state.category = 'Tous';
+      state.search = 'siemens';
+      console.assert(filteredProducts().length === 1 && filteredProducts()[0].brand === 'Siemens', 'Test failed: search should match brand and product text');
+
+      state.search = '';
+      const message = buildWhatsAppMessage();
+      console.assert(message.includes('Relais Finder 40.52 - 24VDC (Ref: REL-4052) | Qté: 2 | Prix: 35 DH'), 'Test failed: priced product format is incorrect');
+      console.assert(message.includes('Scrutateur laser NanoScan3 (Ref: SCAN-NANO3) | Qté: 1'), 'Test failed: no-price product format is incorrect');
+
+      state.cart = previousCart;
+      state.brand = previousBrand;
+      state.category = previousCategory;
+      state.search = previousSearch;
+    }
+
+    searchInput.addEventListener('input', (event) => {
+      state.search = event.target.value;
+      renderProducts();
+    });
+
+    brandSelect.addEventListener('change', (event) => {
+      state.brand = event.target.value;
+      renderAll();
+    });
+
+    categorySelect.addEventListener('change', (event) => {
+      state.category = event.target.value;
+      renderAll();
+    });
+
+    clearCartBtn.addEventListener('click', clearCart);
+    sendOrderBtn.addEventListener('click', sendOrderToWhatsApp);
+    clearFiltersBtn.addEventListener('click', clearFilters);
+
+    runSelfTests();
+    renderAll();
+  </script>
+</body>
+</html>
